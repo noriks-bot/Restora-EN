@@ -1,13 +1,8 @@
-# WP runtime
-*.log
-.DS_Store
-node_modules/
-
-# Plugin caches
-plugins/*/cache/
-plugins/*/logs/
-plugins/woocommerce/i18n/
-plugins/woocommerce/.maintenance
-
-# Don't track binary backups inside theme
-restora/front-page.php.bak.*
+# Ignore everything in root
+/*
+!.gitignore
+!README.md
+!/wp-content/
+/wp-content/uploads/
+!/wp-content/themes/
+!/wp-content/plugins/
