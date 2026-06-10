@@ -1,1 +1,1 @@
-<?php readfile( get_template_directory() . "/assets/alfaform-clone/site/products/northpower-experience-the-shift-in-shape-posture-pride.html" );
+<?php readfile("/var/www/restora/si/static/site/products/oreiller-soya-2-0.html");
