@@ -7,7 +7,7 @@
 
 $clone_dir   = get_template_directory()     . '/assets/restora-clone';
 $clone_uri   = get_template_directory_uri() . '/assets/restora-clone';
-$source_file = $clone_dir . '/site/products/housse-de-couette-en-soie-naturelle-soya.html';
+$source_file = $clone_dir . '/site/products/oreiller-soya-2-0.html';
 
 if ( ! file_exists( $source_file ) ) {
     status_header( 500 );
@@ -28,6 +28,27 @@ $replacements = array(
 );
 
 $html = strtr( $html, $replacements );
+// Fix broken brand-replaced domains
+$brand_domain_map = array(
+    "//restora-paris.com/cdn/" => $clone_uri . "/site/cdn/",
+    "//soya-paris.com/cdn/"    => $clone_uri . "/site/cdn/",
+    "//puralux.local/cdn/"     => $clone_uri . "/site/cdn/",
+    "//zimadental.nl/cdn/"     => $clone_uri . "/site/cdn/",
+    "//stepora.local/cdn/"     => $clone_uri . "/site/cdn/",
+    "//treatmedy.com/cdn/"     => $clone_uri . "/site/cdn/",
+    "//calmara.local/cdn/"     => $clone_uri . "/site/cdn/",
+    "//callixe.com/cdn/"       => $clone_uri . "/site/cdn/",
+    "https://restora-paris.com/cdn/" => $clone_uri . "/site/cdn/",
+    "https://soya-paris.com/cdn/"    => $clone_uri . "/site/cdn/",
+    "https://puralux.local/cdn/"     => $clone_uri . "/site/cdn/",
+    "https://zimadental.nl/cdn/"     => $clone_uri . "/site/cdn/",
+    "https://stepora.local/cdn/"     => $clone_uri . "/site/cdn/",
+    "https://treatmedy.com/cdn/"     => $clone_uri . "/site/cdn/",
+    "https://calmara.local/cdn/"     => $clone_uri . "/site/cdn/",
+    "https://callixe.com/cdn/"       => $clone_uri . "/site/cdn/",
+);
+$html = strtr( $html, $brand_domain_map );
+
 
 // Strip Shrine theme protection + suspicious shopify.jsdeliver.cloud loader.
 $html = preg_replace(
@@ -79,6 +100,55 @@ $html = preg_replace(
     "\n",
     $html
 );
+
+// === BORIS PATCH v2 ===
+// 1) Odstrani inline skripte Shopify appov, ki kicajo mrtve endpointe:
+//    - init-shop-cart-sync (graphql.json 404 + shop.app/pay/hop iframe CSP 403)
+//    - ez-product-translate (translate.freshify.click 404)
+//    - Loox loader (loox.io iframe CSP 403)
+//    - web-pixels-manager / monorail analytics
+$html = preg_replace_callback(
+    '#<script\b([^>]*)>([\s\S]*?)</script>#i',
+    function ( $m ) {
+        if ( strpos( $m[1], 'src=' ) !== false ) {
+            return $m[0];
+        }
+        foreach ( array( 'initShopCartSync', 'translate.freshify.click', 'loox.io', 'wpmLoader', 'monorail' ) as $needle ) {
+            if ( strpos( $m[2], $needle ) !== false ) {
+                return "\n";
+            }
+        }
+        return $m[0];
+    },
+    $html
+);
+
+// 2) product-recommendations fetcha Shopify /recommendations/products -> 404; odstrani element
+$html = preg_replace( '#<product-recommendations\b[\s\S]*?</product-recommendations>#i', '', $html );
+
+// 3) Kaching popup: config ima "popups":[] (prazno), skripta pa klice /api/.../graphql.json -> 404
+$html = preg_replace(
+    array(
+        '#<script[^>]*src="[^"]*kaching-popup[^"]*"[^>]*></script>#i',
+        '#<kaching-popup\b[^>]*>[\s\S]*?</kaching-popup>#i',
+        '#<kaching-popup-v2\b[^>]*>[\s\S]*?</kaching-popup-v2>#i',
+    ),
+    '',
+    $html
+);
+
+// 4) JSON-escaped CDN refs (\/\/restora-paris.com\/cdn\/ ...) -> lokalne
+$esc_local = str_replace( '/', '\\/', $clone_uri . '/site/cdn/' );
+foreach ( array( 'restora-paris.com', 'soya-paris.com' ) as $dom ) {
+    $html = str_replace(
+        array( 'http:\\/\\/' . $dom . '\\/cdn\\/', 'https:\\/\\/' . $dom . '\\/cdn\\/', '\\/\\/' . $dom . '\\/cdn\\/' ),
+        $esc_local,
+        $html
+    );
+}
+// 5) Cache-bust za country-flags.css (Cloudflare ima staro verzijo z restora-paris.com refi)
+$html = str_replace( 'country-flags.css?v=', 'country-flags.css?v=boris2-', $html );
+// === END BORIS PATCH v2 ===
 
 // Inject WC add-to-cart handler before </body>
 $wc_product_id = 10;
