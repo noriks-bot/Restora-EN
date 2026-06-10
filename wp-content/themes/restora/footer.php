@@ -8,6 +8,7 @@
 ?>
   </div><!-- #content -->
 
+  <?php /* boris-hide-hf */ if ( ! ( function_exists( 'is_cart' ) && is_cart() ) ) : ?>
   <footer class="cal-footer" role="contentinfo">
 
     <!-- Newsletter strip -->
@@ -106,6 +107,7 @@
     </div>
 
   </footer>
+  <?php endif; ?>
 
 </div><!-- #page -->
 

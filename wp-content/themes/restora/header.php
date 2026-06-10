@@ -26,6 +26,7 @@
 
 <div id="page" class="restora-site">
 
+  <?php /* boris-hide-hf */ if ( ! ( function_exists( 'is_cart' ) && is_cart() ) ) : ?>
   <!-- Announcement bar -->
   <div class="cal-announce" role="region" aria-label="Promocije">
     <div class="cal-announce-track">
@@ -89,5 +90,6 @@
       </nav>
     </div>
   </header>
+  <?php endif; ?>
 
   <div id="content" class="cal-site-content">
