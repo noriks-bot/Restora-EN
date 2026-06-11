@@ -48,7 +48,7 @@ defined( 'ABSPATH' ) || exit;
             if ( $ship > 0 ) {
               echo wc_price( $ship );
             } else {
-              echo '<span class="shipping-free-badge">Brezplačno</span>';
+              echo '<span class="shipping-free-badge">Free</span>';
             }
           ?>
         </div>

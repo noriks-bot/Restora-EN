@@ -15,12 +15,12 @@
     <div class="cal-footer-newsletter">
       <div class="cal-container cal-footer-newsletter-inner">
         <div class="cal-footer-newsletter-text">
-          <h3>Bodi prvi obveščen</h3>
-          <p>Ekskluzivne ponudbe, novi izdelki in nasveti za boljši spanec.</p>
+          <h3>Be the first to know</h3>
+          <p>Exclusive offers, new products and tips for better sleep.</p>
         </div>
-        <form class="cal-newsletter-form" action="#" method="post" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Hvala';">
-          <input type="email" name="email" placeholder="Tvoj e-mail" required aria-label="E-mail">
-          <button type="submit">Prijavi se</button>
+        <form class="cal-newsletter-form" action="#" method="post" onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Thanks';">
+          <input type="email" name="email" placeholder="Your e-mail" required aria-label="E-mail">
+          <button type="submit">Sign up</button>
         </form>
       </div>
     </div>
@@ -31,7 +31,7 @@
 
         <div class="cal-footer-col cal-footer-brand">
           <div class="cal-footer-logo">RESTORA</div>
-          <p class="cal-footer-tag">Ergonomske blazine za boljši spanec.<br>30 noči brez tveganja.</p>
+          <p class="cal-footer-tag">Ergonomic pillows for better sleep.<br>30 nights risk-free.</p>
           <div class="cal-footer-socials">
             <a href="#" aria-label="Instagram">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="18" cy="6" r="1" fill="currentColor"/></svg>
@@ -49,35 +49,35 @@
         </div>
 
         <div class="cal-footer-col">
-          <h4>Trgovina</h4>
+          <h4>Shop</h4>
           <ul>
-            <li><a href="#bundles">Restora blazina</a></li>
-            <li><a href="#bundles">Paketi</a></li>
-            <li><a href="#">Akcije</a></li>
-            <li><a href="#">Darilni boni</a></li>
+            <li><a href="#bundles">Restora pillow</a></li>
+            <li><a href="#bundles">Bundles</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">Gift cards</a></li>
           </ul>
         </div>
 
         <div class="cal-footer-col">
-          <h4>Podpora</h4>
+          <h4>Support</h4>
           <ul>
-            <li><a href="#faq">Pogosta vprašanja</a></li>
-            <li><a href="#">Dostava in vračila</a></li>
-            <li><a href="#">Garancija 30 noči</a></li>
-            <li><a href="#">Kontakt</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="#">Shipping &amp; returns</a></li>
+            <li><a href="#">30-night guarantee</a></li>
+            <li><a href="#">Contact</a></li>
           </ul>
         </div>
 
         <div class="cal-footer-col">
-          <h4>O nas</h4>
+          <h4>About</h4>
           <ul>
-            <li><a href="#">Naša zgodba</a></li>
-            <li><a href="#reviews">Ocene strank</a></li>
+            <li><a href="#">Our story</a></li>
+            <li><a href="#reviews">Customer reviews</a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">Mediji</a></li>
+            <li><a href="#">Press</a></li>
           </ul>
           <div class="cal-footer-contact">
-            <p><strong>Pomoč:</strong><br><a href="mailto:info@restora.si">info@restora.si</a></p>
+            <p><strong>Support:</strong><br><a href="mailto:info@restora.si">info@restora.si</a></p>
           </div>
         </div>
 
@@ -88,15 +88,15 @@
     <div class="cal-footer-bottom">
       <div class="cal-container cal-footer-bottom-inner">
         <div class="cal-footer-copy">
-          © <?php echo date('Y'); ?> Restora. Vse pravice pridržane.
+          © <?php echo date('Y'); ?> Restora. All rights reserved.
         </div>
         <div class="cal-footer-legal">
-          <a href="#">Pogoji uporabe</a>
-          <a href="#">Politika zasebnosti</a>
-          <a href="#">Piškotki</a>
-          <a href="#">Politika vračila</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookies</a>
+          <a href="#">Refund Policy</a>
         </div>
-        <div class="cal-footer-payments" aria-label="Sprejmemo">
+        <div class="cal-footer-payments" aria-label="We accept">
           <span class="cal-pay">VISA</span>
           <span class="cal-pay">MC</span>
           <span class="cal-pay">PAYPAL</span>

@@ -62,7 +62,7 @@ add_action( 'wp_footer', function () {
 	document.addEventListener('DOMContentLoaded', function () {
 	  var btn = document.querySelector('.storefront-sticky-add-to-cart__content-button');
 	  if (!btn) return;
-	  btn.textContent = 'Dodaj v košarico';
+	  btn.textContent = 'Add to cart';
 	  btn.setAttribute('href', '#title-buy-now'); // put your desired URL here
 	});
 	</script>

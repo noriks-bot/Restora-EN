@@ -266,12 +266,12 @@ function noriks_remove_upsell() {
 
     // Only allow removing upsell items
     if ( $item->get_meta( '_noriks_upsell' ) !== 'thank you upsell' ) {
-        wp_send_json_error( 'Samo upsell izdelke je mogoče odstraniti' );
+        wp_send_json_error( 'Only upsell items can be removed' );
     }
 
     // Only allow while in primary-hold
     if ( $order->get_status() !== 'primary-hold' ) {
-        wp_send_json_error( 'Čas za spremembe je potekel' );
+        wp_send_json_error( 'Time for changes has expired' );
     }
 
     $product_name = $item->get_name();
@@ -301,20 +301,20 @@ function noriks_handle_add_upsell() {
     }
 
     $order = wc_get_order( $order_id );
-    if ( ! $order ) wp_send_json_error( 'Naročilo ni bilo najdeno' );
+    if ( ! $order ) wp_send_json_error( 'Order not found' );
 
     // Only allow upsell on COD orders in primary-hold
     if ( $order->get_payment_method() !== 'cod' ) {
-        wp_send_json_error( 'Upsell je na voljo samo pri plačilu po povzetju' );
+        wp_send_json_error( 'Upsell is only available with cash on delivery' );
     }
     if ( $order->get_status() !== 'primary-hold' ) {
-        wp_send_json_error( 'Čas za dodajanje je potekel' );
+        wp_send_json_error( 'Time for adding has expired' );
     }
 
     // Time limit: 5 min from order creation (safety check)
     $created = $order->get_date_created();
     if ( $created && ( time() - $created->getTimestamp() ) > 330 ) { // 5.5 min grace
-        wp_send_json_error( 'Čas za dodajanje je potekel' );
+        wp_send_json_error( 'Time for adding has expired' );
     }
 
     // Get the actual product (variation or simple)
@@ -328,7 +328,7 @@ function noriks_handle_add_upsell() {
         $item_variation_id = $item->get_variation_id();
         if ( $item_product_id == $check_product_id || ( $variation_id && $item_variation_id == $variation_id ) ) {
             if ( $item->get_meta( '_noriks_upsell' ) ) {
-                wp_send_json_error( 'Ta izdelek ste že dodali' );
+                wp_send_json_error( 'You have already added this item' );
             }
         }
     }
@@ -347,7 +347,7 @@ function noriks_handle_add_upsell() {
         $active_price = (float) $product->get_regular_price();
     }
     if ( ! $active_price ) {
-        wp_send_json_error( 'Cena izdelka ni na voljo' );
+        wp_send_json_error( 'Product price not available' );
     }
 
     $quantity = max( 1, absint( $_POST['quantity'] ?? 3 ) );
@@ -372,7 +372,7 @@ function noriks_handle_add_upsell() {
         'total'    => $upsell_price * $quantity,
     ));
 
-    if ( ! $item_id ) wp_send_json_error( 'Napaka pri dodajanju' );
+    if ( ! $item_id ) wp_send_json_error( 'Error adding item' );
 
     // Mark as upsell
     $item = $order->get_item( $item_id );
