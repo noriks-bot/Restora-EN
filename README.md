@@ -2,7 +2,7 @@
 
 WordPress theme + plugins for **Restora** brand, market **SI**.
 
-- **Subdomain:** `si-restora.noriks.com` → brand-machine (18.197.40.171)
+- **Subdomain:** `en-restora.noriks.com` → brand-machine (18.197.40.171)
 - **Theme:** `restora/` (Shopify-clone served via front-page.php)
 - **Plugins:** `plugins/` (only managed plugins, WP defaults excluded)
 - **Demo product:** Soya Silk Duvet (created via WooCommerce REST)
@@ -20,7 +20,7 @@ restora-repo/
 ## Deploy
 On brand-machine:
 ```
-cd /var/www/restora/si/.restora-repo
+cd /var/www/restora/en/.restora-repo
 GIT_SSH_COMMAND='ssh -i ~/.ssh/github_noriks' git pull
 ```
 
