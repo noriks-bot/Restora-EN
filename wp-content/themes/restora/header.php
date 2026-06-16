@@ -1,6 +1,6 @@
 <?php
 /**
- * Restora theme header
+ * Dormelle theme header
  * Announcement bar + sticky header (logo center + ikoni desno)
  *
  * @package restora
@@ -60,8 +60,8 @@
         </nav>
       </div>
 
-      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cal-logo" aria-label="Restora">
-        <span class="cal-logo-text">RESTORA</span>
+      <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cal-logo" aria-label="Dormelle">
+        <span class="cal-logo-text">DORMELLE</span>
       </a>
 
       <div class="cal-header-right">
