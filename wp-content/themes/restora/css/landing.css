@@ -967,13 +967,13 @@ li.dormelle-card{list-style:none;margin:0 !important;width:auto !important;float
 .dormelle-card-price del{opacity:.5;margin-right:6px}
 .dormelle-card-price ins{text-decoration:none;font-weight:600;color:#1C2632}
 /* Dormelle shop: skrij noriks banner + category menu */
-.category-menu, .one-banner-shop, .woocommerce-products-header{display:none !important}
-.woocommerce .content-area, .content-area{padding-top:32px !important}
+.category-menu, .one-banner-shop, .shop-filter-buttons{display:none !important}
+.woocommerce .content-area, .content-area{padding-top:0 !important}
 ul.products{margin-top:0 !important}
 
 /* === Dormelle shop: enakomeren razmik + vizualna izboljšava === */
-.woocommerce ul.products, ul.products{padding-top:60px !important;padding-bottom:60px !important}
-.woocommerce-products-header{display:block !important;max-width:1280px;margin:0 auto;padding:48px 24px 0;text-align:center}
+.woocommerce ul.products, ul.products{padding-top:0 !important;padding-bottom:60px !important}
+.woocommerce-products-header{display:block !important;max-width:1280px;margin:0 auto !important;padding:60px 24px 40px !important;text-align:center}
 .woocommerce-products-header__title,.woocommerce-products-header h1{font-size:2rem;font-weight:800;color:#1C2632;margin:0;letter-spacing:.3px}
 .woocommerce-products-header .term-description,.woocommerce-products-header p{display:none}
 .dormelle-card-img{transition:transform .25s ease,box-shadow .25s ease;box-shadow:0 2px 12px rgba(28,38,50,.05)}
