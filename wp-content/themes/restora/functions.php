@@ -205,6 +205,15 @@ function enqueue_main_styles() {
         'all'
     );
 
+    // Enqueue landing.css (header/nav/announce styling) everywhere
+    wp_enqueue_style(
+        'landing-style',
+        get_template_directory_uri() . '/css/landing.css',
+        array(),
+        filemtime(get_template_directory() . '/css/landing.css'),
+        'all'
+    );
+
     // Enqueue product.css only on WooCommerce single product pages
     if (function_exists('is_product') && is_product()) {
         wp_enqueue_style(

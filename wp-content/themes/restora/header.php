@@ -31,14 +31,14 @@
   <div class="cal-announce" role="region" aria-label="Promocije">
     <div class="cal-announce-track">
       <div class="cal-announce-content">
-        <span>★ 4.8/5 · 12.000+ zadovoljnih strank</span>
-        <span>🚚 BREZPLAČNA dostava nad 70€</span>
-        <span>↩ 30 dni brez tveganja — vrnitev denarja</span>
-        <span>🔒 Varno plačilo · SSL šifrirano</span>
-        <span>★ 4.8/5 · 12.000+ zadovoljnih strank</span>
-        <span>🚚 BREZPLAČNA dostava nad 70€</span>
-        <span>↩ 30 dni brez tveganja — vrnitev denarja</span>
-        <span>🔒 Varno plačilo · SSL šifrirano</span>
+        <span>★ 4.8/5 · 12,000+ happy customers</span>
+        <span>🚚 FREE shipping over 70€</span>
+        <span>↩ 30-day risk-free — money back</span>
+        <span>🔒 Secure payment · SSL encrypted</span>
+        <span>★ 4.8/5 · 12,000+ happy customers</span>
+        <span>🚚 FREE shipping over 70€</span>
+        <span>↩ 30-day risk-free — money back</span>
+        <span>🔒 Secure payment · SSL encrypted</span>
       </div>
     </div>
   </div>
@@ -52,11 +52,9 @@
           <span></span><span></span><span></span>
         </button>
         <nav class="cal-nav-desktop" aria-label="Glavni meni">
-          <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Domov</a>
-          <a href="#bundles">Paketi</a>
-          <a href="#how">Kako deluje</a>
-          <a href="#reviews">Ocene</a>
-          <a href="#faq">FAQ</a>
+          <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+          <a href="<?php echo esc_url( home_url( "/shop/" ) ); ?>">Shop</a>
+          <a href="<?php echo esc_url( home_url( "/product/dormelle-pillow-20/" ) ); ?>">Product</a>
         </nav>
       </div>
 
@@ -81,11 +79,9 @@
 
     <div class="cal-mobile-drawer">
       <nav class="cal-nav-mobile" aria-label="Mobilni meni">
-        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Domov</a>
-        <a href="#bundles">Paketi</a>
-        <a href="#how">Kako deluje</a>
-        <a href="#reviews">Ocene</a>
-        <a href="#faq">FAQ</a>
+        <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
+        <a href="<?php echo esc_url( home_url( "/shop/" ) ); ?>">Shop</a>
+        <a href="<?php echo esc_url( home_url( "/product/dormelle-pillow-20/" ) ); ?>">Product</a>
         <a href="<?php echo esc_url( site_url( '/my-account/' ) ); ?>">Moj račun</a>
       </nav>
     </div>

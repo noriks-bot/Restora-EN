@@ -51,7 +51,7 @@ if ($product->is_type('variable')) {
     $tmp_price = $product->get_sale_price();
 }
 
-$tmp_price = $tmp_price / $shirt_count;
+$tmp_price = (float)( $tmp_price !== "" && $tmp_price !== null ? $tmp_price : $product->get_price() ) / $shirt_count;
 //$tmp_price = round($tmp_price * 100) / 100; // result: 9.99
 $tmp_price = floor(($tmp_price + 0.00001) * 100) / 100;
 
@@ -271,7 +271,7 @@ if ($product->is_type('variable')) {
     $tmp_price = $product->get_sale_price();
 }
 
-$tmp_price = $tmp_price / $shirt_count;
+$tmp_price = (float)( $tmp_price !== "" && $tmp_price !== null ? $tmp_price : $product->get_price() ) / $shirt_count;
 //$tmp_price = round($tmp_price * 100) / 100; // result: 9.99
 $tmp_price = floor(($tmp_price + 0.00001) * 100) / 100;
 
