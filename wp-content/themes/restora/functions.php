@@ -1063,3 +1063,40 @@ function noriks_term_group( $group ) {
 add_filter( 'xoo_wsc_is_sidecart_page', '__return_true', 99 );
 
 
+
+/* === Dormelle bundle (VIP offer) — cart pricing logic === */
+add_filter( 'woocommerce_add_cart_item_data', function( $data, $product_id ){
+    if ( isset( $_POST['db_bundle_price'] ) ) {
+        $data['db_bundle_price'] = floatval( $_POST['db_bundle_price'] );
+        $data['db_bundle_label'] = isset($_POST['db_bundle_label']) ? sanitize_text_field( wp_unslash($_POST['db_bundle_label']) ) : '';
+        $data['db_bundle_bonus'] = isset($_POST['db_bundle_bonus']) ? sanitize_text_field( wp_unslash($_POST['db_bundle_bonus']) ) : '';
+        $data['db_bundle_uid']   = md5( microtime() . wp_rand() );
+    }
+    return $data;
+}, 10, 2 );
+
+add_action( 'woocommerce_before_calculate_totals', function( $cart ){
+    if ( is_admin() && ! defined( 'DOING_AJAX' ) ) return;
+    if ( did_action( 'woocommerce_before_calculate_totals' ) >= 2 ) return;
+    foreach ( $cart->get_cart() as $item ) {
+        if ( isset( $item['db_bundle_price'] ) && $item['quantity'] > 0 ) {
+            $item['data']->set_price( $item['db_bundle_price'] / $item['quantity'] );
+        }
+    }
+}, 20 );
+
+add_filter( 'woocommerce_get_item_data', function( $item_data, $cart_item ){
+    if ( ! empty( $cart_item['db_bundle_label'] ) ) {
+        $item_data[] = array( 'name' => 'Pack', 'value' => $cart_item['db_bundle_label'] );
+    }
+    if ( ! empty( $cart_item['db_bundle_bonus'] ) ) {
+        $item_data[] = array( 'name' => 'Gift', 'value' => $cart_item['db_bundle_bonus'] );
+    }
+    return $item_data;
+}, 10, 2 );
+
+// preserve bundle meta to order
+add_action( 'woocommerce_checkout_create_order_line_item', function( $li, $key, $values ){
+    if ( ! empty( $values['db_bundle_label'] ) ) $li->add_meta_data( 'Pack', $values['db_bundle_label'] );
+    if ( ! empty( $values['db_bundle_bonus'] ) ) $li->add_meta_data( 'Gift', $values['db_bundle_bonus'] );
+}, 10, 3 );
