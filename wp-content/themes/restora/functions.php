@@ -1058,3 +1058,8 @@ function noriks_term_group( $group ) {
     return $groups[ $group ] ?? array();
 }
 
+
+/* Side cart: force-enable on all pages (incl. static product clone) */
+add_filter( 'xoo_wsc_is_sidecart_page', '__return_true', 99 );
+
+
