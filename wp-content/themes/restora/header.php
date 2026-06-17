@@ -54,7 +54,7 @@
         <nav class="cal-nav-desktop" aria-label="Glavni meni">
           <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
           <a href="<?php echo esc_url( home_url( "/shop/" ) ); ?>">Shop</a>
-          <a href="<?php echo esc_url( home_url( "/product/dormelle-pillow-20/" ) ); ?>">Product</a>
+          <a href="<?php echo esc_url( home_url( "/product/dormelle-pillow-20/" ) ); ?>">Dormelle Pillow 2.0</a>
         </nav>
       </div>
 
@@ -81,7 +81,7 @@
       <nav class="cal-nav-mobile" aria-label="Mobilni meni">
         <a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a>
         <a href="<?php echo esc_url( home_url( "/shop/" ) ); ?>">Shop</a>
-        <a href="<?php echo esc_url( home_url( "/product/dormelle-pillow-20/" ) ); ?>">Product</a>
+        <a href="<?php echo esc_url( home_url( "/product/dormelle-pillow-20/" ) ); ?>">Dormelle Pillow 2.0</a>
         <a href="<?php echo esc_url( site_url( '/my-account/' ) ); ?>">Moj račun</a>
       </nav>
     </div>
